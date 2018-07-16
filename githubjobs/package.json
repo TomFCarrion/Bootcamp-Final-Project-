@@ -12,5 +12,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+<<<<<<< HEAD
+ ""proxy": "https://jobs.github.com/"  }
 }
+=======
+  },
+  "proxy": "https://jobs.github.com/"
+  }
+>>>>>>> 748422e4277341101f456687e49603b531eb92d5

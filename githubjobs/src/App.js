@@ -16,6 +16,7 @@ class App extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.fetchData = this.fetchData.bind(this)
   }
 
   handleSubmit(data){
@@ -23,8 +24,21 @@ class App extends Component {
       location: data.location,
       jobDescription: data.jobDescription
     })
+    this.fetchData(data);
   }
 
+  // componentDidMount(){
+  //   this.fetchData();
+  // }
+
+  fetchData(data){
+    fetch('/positions.json?description='+ data.jobDescription + '&location=' + data.location)
+    .then(response => response.json())
+    .then(response => {
+      console.log(response);
+    })
+    .catch(error => console.log('parsing failed',error))
+  }
   render() {
     return (
       <div className="App">
