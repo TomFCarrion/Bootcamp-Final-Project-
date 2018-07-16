@@ -10,17 +10,17 @@ class Form extends Component {
       fulltime:''
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange;
+    this.handleSubmit = this.handleSubmit;
   }
-
-  handleChange(event) {
+  //no need to use bind() if you use arrow functions as they do it automatically
+  handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     this.props.handleSubmit(this.state);
     this.setState({
           location: '',
@@ -30,7 +30,15 @@ class Form extends Component {
         event.preventDefault();
 
   }
-
+  componentDidMount(){
+    this.fetchData();
+  }
+  fetchData(){
+    fetch('https://jobs.github.com/positions.json?description=python&location=new+york')
+    .then(response => response.json())
+    .then(parsedJSON => console.log(parsedJSON.results))
+    .catch(error => console.log('parsing failed', error));
+  }
   render() {
     return (
 
