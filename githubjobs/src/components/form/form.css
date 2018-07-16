@@ -1,0 +1,22 @@
+.input{
+  float:left;
+  text-align: left;
+  padding-left:  20px;
+}
+
+.item{
+  padding: 5px;
+}
+
+.input h1{
+  font-size: 2em;
+}
+
+.button{
+  line-height:2;
+  border: none;
+  border-radius: 7px;
+  color: #fff;
+  background-color: #28a745;
+  background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
+}

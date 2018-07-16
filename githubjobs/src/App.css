@@ -1,1 +1,14 @@
 
+.App{
+   padding-top: 1px;
+  height: 100%;
+  width: auto;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+
+
+}
+
+#wrapper{
+  clear: both;
+}
