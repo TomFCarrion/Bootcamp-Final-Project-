@@ -31,15 +31,6 @@ class Form extends Component {
         event.preventDefault();
 
   }
-  componentDidMount(){
-    this.fetchData();
-  }
-  fetchData(){
-    fetch('https://jobs.github.com/positions.json?description=python&location=new+york')
-    .then(response => response.json())
-    .then(parsedJSON => console.log(parsedJSON.results))
-    .catch(error => console.log('parsing failed', error));
-  }
   render() {
     return (
 
