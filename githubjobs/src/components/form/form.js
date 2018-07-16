@@ -14,6 +14,7 @@ class Form extends Component {
     this.handleSubmit = this.handleSubmit;
   }
 
+  //no need to use bind() if you use arrow functions as they do it automatically
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
@@ -30,7 +31,15 @@ class Form extends Component {
         event.preventDefault();
 
   }
-
+  componentDidMount(){
+    this.fetchData();
+  }
+  fetchData(){
+    fetch('https://jobs.github.com/positions.json?description=python&location=new+york')
+    .then(response => response.json())
+    .then(parsedJSON => console.log(parsedJSON.results))
+    .catch(error => console.log('parsing failed', error));
+  }
   render() {
     return (
 
