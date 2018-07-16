@@ -32,7 +32,7 @@ class App extends Component {
   // }
 
   fetchData(data){
-    fetch('/positions.json?description='+ data.jobDescription + '&location=' + data.location)
+    fetch('jobs.github.com/positions.json?description='+ data.jobDescription + '&location=' + data.location)
     .then(response => response.json())
     .then(response => {
       console.log(response);
