@@ -9,6 +9,21 @@
 
 }
 
-#wrapper{
-  clear: both;
+.results{
+  display: inline-block;
+  float: left;
+}
+.title{
+  text-align: left;
+  padding-left: 20px;
+  font-weight: lighter;
+}
+.results-wrapper{
+  margin: 20px;
+  width: 500px;
+  min-height: 600px;
+  background-color: #FFFF;
+  border: 5px;
+  padding: 20px;
+  box-shadow: 1px 3px 10px rgba(0,0,0,.15);
 }

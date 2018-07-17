@@ -3,7 +3,7 @@ import Header from './components/header/header';
 import Form from './components/form/form';
 import JobItem from './components/results/jobItem'
 
-import './app.css';
+import './App.css';
 
 
 class App extends Component {
@@ -17,11 +17,11 @@ class App extends Component {
           fulltime: ''
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.fetchData = this.fetchData.bind(this)
+    this.handleSubmit = this.handleSubmit
+    this.fetchData = this.fetchData
   }
 
-  handleSubmit(data){
+  handleSubmit = (data) =>{
     this.setState({
       location: data.location,
       jobDescription: data.jobDescription
@@ -33,8 +33,8 @@ class App extends Component {
     //   this.fetchData();
     // }
 
-  fetchData(data){
-    fetch('/positions.json?description='+ data.jobDescription + '&location=' + data.location)
+  fetchData = (data) => {
+    fetch('jobs.github.com/positions.json?description='+ data.jobDescription + '&location=' + data.location)
     .then(response => response.json())
     .then(jobs =>{
       this.setState({
@@ -65,6 +65,18 @@ class App extends Component {
             }
           </ul>
         </div>
+
+      <Header />
+      <Form  handleSubmit={this.handleSubmit}/>
+
+        <label>
+          result:<br></br>
+          location:<br></br>
+            {this.state.location}
+            <br></br>
+          job:
+            {this.state.jobDescription}
+        </label>
       </div>
     );
   }
