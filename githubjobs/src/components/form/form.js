@@ -22,15 +22,16 @@ class Form extends Component {
   }
 
   handleSubmit = (event) => {
+    event.preventDefault();
     this.props.handleSubmit(this.state);
     this.setState({
           location: '',
           jobDescription: '',
           fulltime: ''
         }); // empty the field.
-        event.preventDefault();
-
   }
+
+
   render() {
     return (
       <div className = "form-Wrapper">
@@ -43,7 +44,7 @@ class Form extends Component {
             <input type="text"  placeholder="Job description" name="jobDescription" value={this.state.jobDescription} onChange={this.handleChange} />
           </label>
           <label className="item">
-            <input type="radio" name="fulltime" value={this.state.fulltime} onChange={this.handleChange}   />
+            <input type="checkbox" name="fulltime" value={this.state.fulltime} onChange={this.handleChange}   />
             Full Time?
           </label>
 

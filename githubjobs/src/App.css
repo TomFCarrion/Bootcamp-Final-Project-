@@ -1,29 +1,139 @@
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+*{
+  box-sizing: border-box;
+}
+ul {
+  list-style-type: none;
+}
+p{
+  margin: 0 !important;
+}
+li div{
+  position: absolute;
+}
+li{
+  position: relative;
+}
+li button{
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 40px;
+  color: grey;
+}
+.fav li button{
+  color: yellow;
+}
+.divTopLeft{
+  padding: 20px;
+}
+.divTopRight{
+  padding: 20px;
+  right: 0;
+}
+.inFav button{
+  pointer-events: none;
+  color: yellow;
+}
+
+
+.jobTitle{
+  max-width: 60%;
+  font-weight: bold;
+  text-decoration: underline;
+  padding-bottom: 5px;
+}
 
 .App{
-   padding-top: 1px;
+  padding-top: 1px;
   height: 100%;
   width: auto;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
-
-
 }
 
 .results{
   display: inline-block;
+  width: 50%;
   float: left;
+  padding: 0 2.5%;
 }
+
 .title{
   text-align: left;
-  padding-left: 20px;
   font-weight: lighter;
 }
 .results-wrapper{
-  margin: 20px;
-  width: 500px;
-  min-height: 600px;
+  width: 100%;
+  height: 470px;
   background-color: #FFFF;
   border: 5px;
   padding: 20px;
+  -webkit-box-shadow: 1px 3px 10px rgba(0,0,0,.15);
   box-shadow: 1px 3px 10px rgba(0,0,0,.15);
+  overflow-y: scroll;
+}
+
+.header{
+  padding-top: 5px;
+  padding-bottom: 10px;
+  background-color: #24292e;
+  border-bottom: 2px solid #D7D5D4;
+  text-align: left;
+}
+
+.header h1{
+  padding-left: 20px;
+  color: white;
+}
+
+.item-Wrapper{
+  border-bottom: 1px solid black;
+  text-align: left;
+  margin-bottom: 20px;
+  height: 130px;
+  border: 1px solid black;
+}
+
+.jobList{
+  width: 70%;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.form-Wrapper{
+  width: 70%;
+  margin: 0 auto;
+  padding: 1.5% 2.5%;
+}
+
+.input{
+  text-align: left;
+}
+
+.item{
+  padding: 5px;
+}
+
+.input h1{
+  font-size: 2em;
+  font-weight: lighter;
+}
+
+.button{
+  line-height:2;
+  border: none;
+  border-radius: 7px;
+  color: #fff;
+  background-color: #28a745;
+  background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
 }
