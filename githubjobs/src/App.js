@@ -65,18 +65,6 @@ class App extends Component {
             }
           </ul>
         </div>
-
-      <Header />
-      <Form  handleSubmit={this.handleSubmit}/>
-      
-        <label>
-          result:<br></br>
-          location:<br></br>
-            {this.state.location}
-            <br></br>
-          job:
-            {this.state.jobDescription}
-        </label>
       </div>
     );
   }
