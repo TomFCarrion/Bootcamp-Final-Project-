@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/header/header';
 import Form from './components/form/form';
 import JobItem from './components/results/jobItem'
-
+import Detail from './components/details/details';
 import './App.css';
 
 
@@ -11,17 +11,19 @@ class App extends Component {
     super(props);
 
     this.state = {
+          jobDetails: [],
           jobResults: [],
           location: '',
           jobDescription: '',
           fulltime: ''
     };
-
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.fetchData = this.fetchData.bind(this)
+    this.handleDetails = this.handleDetails
+    this.handleSubmit = this.handleSubmit
+    this.fetchData = this.fetchData
+    this.fetchDetails = this.fetchDetails
   }
 
-  handleSubmit(data){
+  handleSubmit = (data) => {
     this.setState({
       location: data.location,
       jobDescription: data.jobDescription
@@ -33,7 +35,7 @@ class App extends Component {
     //   this.fetchData();
     // }
 
-  fetchData(data){
+  fetchData = (data) => {
     fetch('/positions.json?description='+ data.jobDescription + '&location=' + data.location)
     .then(response => response.json())
     .then(jobs =>{
@@ -43,6 +45,10 @@ class App extends Component {
     })
 
     .catch(error => console.log('parsing failed',error))
+  }
+
+  handleDetails = (job) => {
+   this.setState({jobDetails:job});
   }
 
   render() {
@@ -60,7 +66,31 @@ class App extends Component {
                           job ={job}
                           key={job.id}
                           />
+                
+              })
+            }
+          </ul>
 
+          {props.jobs.map((job,index) => {
+            return <JobDetail 
+              title={job.title}
+              location={job.location}
+              company={job.company}
+              type={job.type}
+              />
+          })
+
+        
+          },
+          <ul className="details-wrapper">
+            {
+              this.state.jobResults.map((job) => {
+                  return <JobDetails
+                          job = {job}
+                          key={job.id}
+                          onDetail={this.handleDetails}
+                          />
+                
               })
             }
           </ul>

@@ -7,7 +7,7 @@ class Form extends Component {
     this.state = {
       location: '',
       jobDescription: '',
-      fulltime:''
+      fulltime:'',
     };
 
     this.handleChange = this.handleChange;
@@ -31,6 +31,7 @@ class Form extends Component {
         event.preventDefault();
 
   }
+
   render() {
     return (
       <div className = "form-Wrapper">
@@ -46,7 +47,6 @@ class Form extends Component {
             <input type="radio" name="fulltime" value={this.state.fulltime} onChange={this.handleChange}   />
             Full Time?
           </label>
-
           <input className="button" type="submit" value="Search" />
         </form>
       </div>
