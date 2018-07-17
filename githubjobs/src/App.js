@@ -68,7 +68,7 @@ class App extends Component {
 
       <Header />
       <Form  handleSubmit={this.handleSubmit}/>
-
+      
         <label>
           result:<br></br>
           location:<br></br>
