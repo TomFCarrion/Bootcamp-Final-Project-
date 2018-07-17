@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Header from './components/header/header';
 import Form from './components/form/form';
+import JobItem from './components/results/jobItem'
 
-import './App.css';
+import './app.css';
 
 
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+          jobResults: [],
           location: '',
           jobDescription: '',
           fulltime: ''
@@ -27,32 +29,42 @@ class App extends Component {
     this.fetchData(data);
   }
 
-  // componentDidMount(){
-  //   this.fetchData();
-  // }
+    // componentDidMount(){
+    //   this.fetchData();
+    // }
 
   fetchData(data){
     fetch('/positions.json?description='+ data.jobDescription + '&location=' + data.location)
     .then(response => response.json())
-    .then(response => {
-      console.log(response);
+    .then(jobs =>{
+      this.setState({
+        jobResults: jobs
+      })
     })
+
     .catch(error => console.log('parsing failed',error))
   }
+
   render() {
+
     return (
       <div className="App">
-      <Header />
-      <Form  handleSubmit={this.handleSubmit}/>
+        <Header />
+        <Form  handleSubmit={this.handleSubmit}/>
+        <div className="results">
+          <h1 className="title">Search Results</h1>
+          <ul className="results-wrapper">
+            {
+              this.state.jobResults.map((job) => {
+                  return <JobItem
+                          job ={job}
+                          key={job.id}
+                          />
 
-        <label>
-          result:<br></br>
-          location:<br></br>
-            {this.state.location}
-            <br></br>
-          job:
-            {this.state.jobDescription}
-        </label>
+              })
+            }
+          </ul>
+        </div>
       </div>
     );
   }
