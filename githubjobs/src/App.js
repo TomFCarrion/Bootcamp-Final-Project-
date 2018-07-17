@@ -17,11 +17,11 @@ class App extends Component {
           fulltime: ''
     };
 
-    this.handleSubmit = this.handleSubmit
-    this.fetchData = this.fetchData
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.fetchData = this.fetchData.bind(this)
   }
 
-  handleSubmit = (data) =>{
+  handleSubmit(data){
     this.setState({
       location: data.location,
       jobDescription: data.jobDescription
@@ -33,8 +33,8 @@ class App extends Component {
     //   this.fetchData();
     // }
 
-  fetchData = (data) => {
-    fetch('jobs.github.com/positions.json?description='+ data.jobDescription + '&location=' + data.location)
+  fetchData(data){
+    fetch('/positions.json?description='+ data.jobDescription + '&location=' + data.location)
     .then(response => response.json())
     .then(jobs =>{
       this.setState({
