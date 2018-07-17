@@ -31,9 +31,9 @@ class App extends Component {
     this.fetchData(data);
   }
 
-    // componentDidMount(){
-    //   this.fetchData();
-    // }
+    componentwillMount(){
+       this.handleDetails();
+     }
 
   fetchData = (data) => {
     fetch('/positions.json?description='+ data.jobDescription + '&location=' + data.location)
@@ -65,36 +65,13 @@ class App extends Component {
                   return <JobItem
                           job ={job}
                           key={job.id}
+                          handleDetails={this.handleDetails}
                           />
                 
               })
             }
-          </ul>
-
-          {props.jobs.map((job,index) => {
-            return <JobDetail 
-              title={job.title}
-              location={job.location}
-              company={job.company}
-              type={job.type}
-              />
-          })
-
-        
-          },
-          <ul className="details-wrapper">
-            {
-              this.state.jobResults.map((job) => {
-                  return <JobDetails
-                          job = {job}
-                          key={job.id}
-                          onDetail={this.handleDetails}
-                          />
-                
-              })
-            }
-          </ul>
-        </div>
+          </ul> 
+      </div>
       </div>
     );
   }
