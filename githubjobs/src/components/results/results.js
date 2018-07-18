@@ -18,6 +18,7 @@ class Results extends Component {
                           job ={job}
                           key={job.id}
                           handleFav = {this.props.handleFav}
+                          handleCurrentJob={this.props.handleCurrentJob}
                           />
               })
             }

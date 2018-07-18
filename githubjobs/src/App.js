@@ -4,6 +4,7 @@ import Form from './components/form/form';
 import JobItem from './components/jobItem/jobItem'
 import Results from './components/results/results'
 import Fav from './components/fav/fav'
+import JobDetail from './components/jobDetail/jobDetail'
 
 import './App.css';
 
@@ -17,11 +18,13 @@ class App extends Component {
           jobFavs:[],
           location: '',
           jobDescription: '',
-          fulltime: ''
+          fulltime: '',
+          currentJob:[]
     };
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleFavDel = this.handleFavDel.bind(this)
+    this.handleCurrentJob = this.handleCurrentJob.bind(this)
     this.handleFav = this.handleFav.bind(this)
     this.fetchData = this.fetchData.bind(this)
   }
@@ -35,60 +38,72 @@ class App extends Component {
   }
 
 
+  handleCurrentJob(data){
+    this.setState({
+      currentJob: data
+    }
+  );
+  }
+
+
+
   handleFav(data){
     this.setState({
       jobFavs: this.state.jobFavs.concat([data])
     },
-    this.isFav
-  );
-
-
+      this.isFav
+    );
   }
 
+
   handleFavDel(data){
-    for (var i = 0; i < this.state.jobFavs.length; i++) {
+    let aux = this.state.jobFavs;
+    for (let i = 0; i < this.state.jobFavs.length; i++) {
       if (this.state.jobFavs[i].id == data.id) {
-        if (i==0) {
+        if (this.state.jobFavs.length==1) {
           this.setState({
             jobFavs: []
           },
-            this.isFav
+            this.isNotFav
           );
-          }else {
-            this.setState({
-              jobFavs: this.state.jobFavs.splice((i-1), 1)
-            },
-              this.isFav
-            );
-          }
+        }else {
+          aux.splice(i,1);
+          this.setState({
+            jobFavs: aux
+          },
+            this.isNotFav
+          );
         }
       }
     }
+  }
 
     isFav(){
-      this.forceUpdate();
-      console.log(document.querySelector(".resultsList .item-Wrapper"));
-      console.log(this.state.jobResults);
-      console.log(this.state.jobFavs);
-      for (var i = 0; i < this.state.jobResults.length; i++) {
-        for (var j = 0; j < this.state.jobFavs.length; j++) {
+      for (let i = 0; i < this.state.jobResults.length; i++) {
+        for (let j = 0; j < this.state.jobFavs.length; j++) {
           if (this.state.jobResults[i].id == this.state.jobFavs[j].id) {
             if (!document.querySelectorAll(".resultsList .item-Wrapper")[i].classList.contains("inFav")) {
               document.querySelectorAll(".resultsList .item-Wrapper")[i].classList.add("inFav");
             }
-          }else{
-            if (document.querySelectorAll(".resultsList .item-Wrapper")[i].classList.contains("inFav")) {
-              document.querySelectorAll(".resultsList .item-Wrapper")[i].classList.remove("inFav");
-            }
           }
         }
       }
     }
 
-
-
-
-
+    isNotFav(){
+      let flag = false;
+      for (let i = 0; i < this.state.jobResults.length; i++) {
+        for (let j = 0; j < this.state.jobFavs.length; j++) {
+          if (this.state.jobResults[i].id == this.state.jobFavs[j].id) {
+            flag = true;
+          }
+        }
+        if (flag==false) {
+          document.querySelectorAll(".resultsList .item-Wrapper")[i].classList.remove("inFav");
+        }
+        flag=false;
+      }
+    }
 
     // componentDidMount(){
     //   this.fetchData();
@@ -112,10 +127,11 @@ class App extends Component {
         <Form  handleSubmit={this.handleSubmit}/>
 
         <div className="jobList">
-          <Results jobResults = {this.state.jobResults} handleFav = {this.handleFav}/>
+          <Results jobResults = {this.state.jobResults} handleFav = {this.handleFav} handleCurrentJob = {this.handleCurrentJob}/>
           <Fav jobFavs = {this.state.jobFavs} handleFavDel = {this.handleFavDel}/>
         </div>
 
+        <JobDetail job={this.state.currentJob}/>
 
       </div>
     );
