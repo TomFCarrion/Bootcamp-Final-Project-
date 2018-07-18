@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './form.css';
 
 class Form extends Component {
   constructor(props) {
@@ -38,10 +37,10 @@ class Form extends Component {
         <form className="input" onSubmit={this.handleSubmit}>
           <h1>Find your job!</h1>
           <label className="item">
-            <input type="text"  placeholder="Location" name="location" value={this.state.location} onChange={this.handleChange} />
+            <input  className="inputStyle" type="text"  placeholder="Location" name="location" value={this.state.location} onChange={this.handleChange} />
           </label>
           <label className="item">
-            <input type="text"  placeholder="Job description" name="jobDescription" value={this.state.jobDescription} onChange={this.handleChange} />
+            <input className="inputStyle" type="text"  placeholder="Job description" name="jobDescription" value={this.state.jobDescription} onChange={this.handleChange} />
           </label>
           <label className="item">
             <input type="checkbox" name="fulltime" value={this.state.fulltime} onChange={this.handleChange}   />

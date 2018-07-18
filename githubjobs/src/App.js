@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Header from './components/header/header';
 import Form from './components/form/form';
-import JobItem from './components/jobItem/jobItem'
-import Results from './components/results/results'
-import Fav from './components/fav/fav'
-import JobDetail from './components/jobDetail/jobDetail'
+import JobItem from './components/jobItem/jobItem';
+import Results from './components/results/results';
+import Fav from './components/fav/fav';
+import JobDetail from './components/jobDetail/jobDetail';
 
 import './App.css';
 

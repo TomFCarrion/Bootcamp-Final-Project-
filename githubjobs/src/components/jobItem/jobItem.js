@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './jobItem.css';
+
 
 class JobItem extends Component {
   constructor(props){
@@ -23,7 +23,7 @@ class JobItem extends Component {
           <p className="jobLocation">{this.props.job.location}</p>
           <p className="jobDate">{this.props.job.created_at}</p>
         </div>
-        <button onClick = {(e) => this.props.handleFav(this.props.job)}>★</button>
+        <button onClick = {(e) => this.props.handleFav(this.props.job)}>❤︎</button>
       </li>
     )
   }

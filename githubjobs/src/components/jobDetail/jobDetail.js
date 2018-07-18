@@ -14,7 +14,7 @@ class JobDetail extends Component {
     }
     return (
       <div className="jobDetail">
-        <h3>Job Details</h3>
+        <h1>Job Details</h1>
 
         <div className="details">
 
