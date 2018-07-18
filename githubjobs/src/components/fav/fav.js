@@ -8,14 +8,15 @@ class Fav extends Component {
   constructor(props) {
     super(props);
   }
-  dragOver(ev) {
-      ev.preventDefault();
-  }
 
   render() {
     return (
         <div className="results fav">
-          <h1 className="title">Favourites</h1>
+          <div className="favTitleContainer">
+            <h1 className="title">Favourites</h1>
+            <button onClick={this.props.saveFav}>Save</button>
+            <button onClick={this.props.loadFav}>Load</button>
+          </div>
           <ul className="results-wrapper">
             {
               this.props.jobFavs.map((job) => {

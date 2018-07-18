@@ -25,6 +25,8 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleFavDel = this.handleFavDel.bind(this)
     this.handleCurrentJob = this.handleCurrentJob.bind(this)
+    this.saveToLocal = this.saveToLocal.bind(this)
+    this.retrieveLocalStorage = this.retrieveLocalStorage.bind(this)
     this.handleFav = this.handleFav.bind(this)
     this.fetchData = this.fetchData.bind(this)
   }
@@ -45,7 +47,24 @@ class App extends Component {
   );
   }
 
+  saveToLocal() {
+    let local = this.state.jobFavs;
+    localStorage.setItem("saveFavorites", JSON.stringify(local));
+   }
 
+   retrieveLocalStorage(){
+     let aux = localStorage['saveFavorites'];
+     if (aux != 'undefined') {
+       let local = JSON.parse(aux);
+       this.setState({
+         jobFavs:local
+       })
+     }else{
+       this.setState({
+         jobFavs:[]
+       })
+     }
+   }
 
   handleFav(data){
     this.setState({
@@ -128,7 +147,7 @@ class App extends Component {
 
         <div className="jobList">
           <Results jobResults = {this.state.jobResults} handleFav = {this.handleFav} handleCurrentJob = {this.handleCurrentJob}/>
-          <Fav jobFavs = {this.state.jobFavs} handleFavDel = {this.handleFavDel}/>
+          <Fav jobFavs = {this.state.jobFavs} handleFavDel = {this.handleFavDel} saveFav={this.saveToLocal} loadFav={this.retrieveLocalStorage}/>
         </div>
 
         <JobDetail job={this.state.currentJob}/>

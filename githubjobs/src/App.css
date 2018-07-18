@@ -183,3 +183,19 @@ li button{
   padding: 2%;
   border: 1px solid black;
 }
+.favTitleContainer{
+  display: inline-block;
+width: 96%
+}
+.favTitleContainer h1{
+  display: inline-block;
+margin: 0;
+padding: 2%;
+float: left;
+padding-left: 0;
+}
+.favTitleContainer button{
+  float: right;
+  display: inline-block;
+margin-top: 4%;
+}

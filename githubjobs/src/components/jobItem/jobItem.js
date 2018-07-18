@@ -5,11 +5,8 @@ class JobItem extends Component {
   constructor(props){
     super(props);
   }
-  dragCompleted(ev) {
-      console.log("dragCompleted");
-  }
+
   updateDetail = () => {
-    console.log(this.props);
     if (this.props.handleCurrentJob) {
       this.props.handleCurrentJob(this.props.job);
     }
@@ -17,7 +14,7 @@ class JobItem extends Component {
 
   render(){
     return (
-      <li className="item-Wrapper" draggable="true" onClick={this.updateDetail} onDragEnd={this.dragCompleted} >
+      <li className="item-Wrapper" draggable="true" onClick={this.updateDetail} >
         <div className="divTopLeft">
           <p className="jobTitle">{this.props.job.title}</p>
           <p className="jobCompany">{this.props.job.company} - {this.props.job.type}</p>

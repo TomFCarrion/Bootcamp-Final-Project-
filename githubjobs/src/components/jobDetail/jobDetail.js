@@ -9,8 +9,9 @@ class JobDetail extends Component {
   }
 
   render() {
-    console.log(this.props);
-    console.log(this.props.job);
+    if (this.props.job.length==0) {
+      return(<div></div>);
+    }
     return (
       <div className="jobDetail">
         <h3>Job Details</h3>
