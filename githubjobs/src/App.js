@@ -34,7 +34,8 @@ class App extends Component {
   handleSubmit(data){
     this.setState({
       location: data.location,
-      jobDescription: data.jobDescription
+      jobDescription: data.jobDescription,
+      fulltime: data.fulltime
     })
     this.fetchData(data);
   }
@@ -66,12 +67,17 @@ class App extends Component {
      }
    }
 
+   componentDidMount(){
+     window.addEventListener('load', this.retrieveLocalStorage());
+   }
+
   handleFav(data){
     this.setState({
       jobFavs: this.state.jobFavs.concat([data])
     },
       this.isFav
     );
+
   }
 
 
@@ -107,6 +113,7 @@ class App extends Component {
           }
         }
       }
+      this.saveToLocal();
     }
 
     isNotFav(){
@@ -122,6 +129,7 @@ class App extends Component {
         }
         flag=false;
       }
+      this.saveToLocal();
     }
 
     // componentDidMount(){

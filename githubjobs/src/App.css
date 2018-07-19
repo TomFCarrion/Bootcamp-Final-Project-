@@ -29,9 +29,11 @@ li button{
   border: none;
   font-size: 40px;
   color: grey;
+  font-size: 2em;
 }
 .fav li button{
   color: #ff6961;
+  font-size: 2em;
 }
 .divTopLeft{
   padding: 20px;
@@ -42,12 +44,10 @@ li button{
 }
 .inFav button{
   pointer-events: none;
+  font-size: 2em;
   color: #ff6961;
 }
 
-.inFav button:active {
-  transform: translateY(2px);
-}
 .jobTitle{
   max-width: 60%;
   font-weight: normal;
@@ -87,6 +87,7 @@ li button{
 
 .header{
   padding-top: 5px;
+  height: 60px;
   padding-bottom: 10px;
   background-color: #24292e;
   border-bottom: 2px solid #D7D5D4;
@@ -95,7 +96,10 @@ li button{
 
 .header h1{
   padding-left: 20px;
+  font-size: 1.5em;
   color: white;
+  font-family:sans-serif;
+  font-weight: lighter;
 }
 
 .item-Wrapper{
@@ -110,6 +114,10 @@ li button{
   width: 70%;
   margin:  auto;
   display: inline-block;
+}
+
+.jobCompany{
+  color: #087E8B;
 }
 
 .form-Wrapper{
@@ -170,7 +178,6 @@ li button{
   background-color: #FFFF;
   border: 5px;
   padding: 20px;
-  -webkit-box-shadow: 1px 3px 10px rgba(0,0,0,.15);
   box-shadow: 1px 3px 10px rgba(0,0,0,.15);
 }
 
@@ -200,6 +207,8 @@ li button{
   padding: 2%;
   border: 1px solid #ddd;
 }
+
+
 @media screen and (max-width: 600px)
 {
 
@@ -207,7 +216,7 @@ li button{
     margin: 10px;
   }
  .details{
-   /* width: 100%; */
+    width: 100%;
  }
  .logoLink{
    display: none;
@@ -225,5 +234,9 @@ li button{
     display: block;
     width: 100%;
     float: none;
+  }
+
+  .divTopRight{
+    display: none;
   }
 }

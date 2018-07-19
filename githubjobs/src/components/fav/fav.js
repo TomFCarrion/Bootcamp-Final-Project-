@@ -15,8 +15,6 @@ class Fav extends Component {
             <h1 className="title">Favourites</h1>
           </div>
           <ul className="results-wrapper">
-            <button className="button" onClick={this.props.saveFav}>Save</button>
-            <button className="button" onClick={this.props.loadFav}>Load</button>
             {
               this.props.jobFavs.map((job) => {
                   return <JobItem

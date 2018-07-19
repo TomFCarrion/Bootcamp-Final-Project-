@@ -30,6 +30,26 @@ class Form extends Component {
         }); // empty the field.
   }
 
+  getInitialState =  () => {
+    return {
+      fulltime: false
+    }
+  }
+
+  handleOptionChange= (changeEvent) => {
+    if(this.state.fulltime==true)
+    {
+      this.setState({
+        selectedOption: false
+      });
+    } else{
+      this.setState({
+        selectedOption: true
+      });
+    }
+
+  }
+
 
   render() {
     return (
@@ -43,7 +63,7 @@ class Form extends Component {
             <input className="inputStyle" type="text"  placeholder="Job description" name="jobDescription" value={this.state.jobDescription} onChange={this.handleChange} />
           </label>
           <label className="item">
-            <input type="checkbox" name="fulltime" value={this.state.fulltime} onChange={this.handleChange}   />
+            <input type="checkbox" name="fulltime" value={this.state.fulltime}  onChange={this.handleOptionChange}   />
             Full Time?
           </label>
 
